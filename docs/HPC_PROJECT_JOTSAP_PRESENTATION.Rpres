@@ -56,13 +56,6 @@ Not a good candidate
 * No categorical predictors; numerical & interval only
 
 
-Analysis workflow 
-========================================================
-* Load Data
-* Clean & Process Data
-* Train Model
-
-
 Tools & Technology
 ========================================================
 Developing this model in R
@@ -70,7 +63,6 @@ Developing this model in R
 * Data Cleaning: Dplyr, Magrittr, Tidyr, Readr
 * Data Modeling: Caret, RandomForest, Ranger, e1071, Parallel, doParallel
 * Workflow: SLURM, Spack
-
 
 Dev Process
 ========================================================
@@ -109,7 +101,7 @@ M2 Staging
   
   
 Each node has: 
-* Dual Intel Xeon E5-2695v4 2.1 GHz 18-core "Broadwell" processors
+* Dual Intel Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors
 * 256 GB of DDR4-2400 RAM
 * NVIDIA Quadro M5000 GPU
   
@@ -125,7 +117,7 @@ M2 Prod
 [standard-mem-s](https://s2.smu.edu/hpc/documentation/about.html#standard-nodes)
 
 
-* Xeon E5-2695v4 2.1 GHz 18-core "Broadwell" processors with 45 MB of cache each 
+* Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors with 45 MB of cache each 
 * 256 GB of DDR4-2400 memory
 * Advanced Vector Extensions (AVX2)
 
@@ -284,5 +276,43 @@ barplot( rf_times, col = rainbow(length(rf_times)),   main = "RF Performance vs 
 ```
 
 
+Production Workflow 
+========================================================
+* Load Spack Shell
+* Activate Spack Environment
+* Load Data
+* Clean & Process Data
+* Train Model
+  
+  
+**File**                 | **Function**
+-------------------------|-----------
+```spack_r_final.yaml``` | Spack YAML file for creating the environment
+```fraud_final.R```      | loads libraries, loads & cleans data, runs model
+```fraud.sbatch```       | SLURM file that calls the **fraud_final.R** file 
 
+
+
+Production SLURM
+========================================================
+
+```
+#!/bin/bash -l
+#SBATCH -J rbatch
+#SBATCH -o rbatch_%j.out
+#SBATCH -p standard-mem-s
+#SBATCH --mem=32G
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=8
+
+module purge
+
+wget https://raw.githubusercontent.com/jotsap/msds_hpc_project/main/bin/fraud_final.R
+
+source /work/users/jotsap/spack/share/spack/setup-env.sh
+spack env activate r-batch
+
+Rscript fraud_final.R
+
+```
 
