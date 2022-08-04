@@ -2,12 +2,12 @@
 
 Fraud detection binomial prediction model. Eventually selected Random Forest as the model type
   
-**[HTML Presentation]**(http://htmlpreview.github.io/?https://raw.githubusercontent.com/jotsap/msds_hpc_project/main/docs/HPC_PROJECT_JOTSAP_PRESENTATION.html)
+[**HTML Presentation**](http://htmlpreview.github.io/?https://raw.githubusercontent.com/jotsap/msds_hpc_project/main/docs/HPC_PROJECT_JOTSAP_PRESENTATION.html)
   
 
 ### Data source  
 
-**[Kaggle: Fraud Detection]**(https://www.kaggle.com/datasets/ealaxi/paysim1)
+[Kaggle: Fraud Detection](https://www.kaggle.com/datasets/ealaxi/paysim1)
 Size: 470MB  
 Dimensions: 6.3 Million Rows & 9 Predictors
 
