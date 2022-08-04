@@ -1,7 +1,9 @@
 ## Proposal: Fraud Detection
 
-Looking at doing a fraud detection binomial prediction model. Currently evaluating Random Forest, LASSO, and standard Logistic Regression
-
+Fraud detection binomial prediction model. Eventually selected Random Forest as the model type
+  
+**[HTML Presentation]**(http://htmlpreview.github.io/?https://raw.githubusercontent.com/jotsap/msds_hpc_project/main/docs/HPC_PROJECT_JOTSAP_PRESENTATION.html)
+  
 
 ### Data source  
 
